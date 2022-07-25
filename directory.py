@@ -10,9 +10,11 @@ class Directory:
 
     def RenameAllFiles(self, newname):
         counter = 0
-        for file in self.files:
-            filetype = self.GetFileType(file)
-            os.rename(self.path + '/' + file, self.path + '/' + newname + "_" + str(counter) + '.' + filetype)
-            print("Renaming " + file + " to " + newname + "_" + str(counter) + "." + filetype)
-            counter+=1
-    
+        if(len(self.files)):
+            for file in self.files:
+                filetype = self.GetFileType(file)
+                os.rename(self.path + '/' + file, self.path + '/' + newname + "_" + str(counter) + '.' + filetype)
+                print("Renaming " + file + " to " + newname + "_" + str(counter) + "." + filetype)
+                counter+=1
+        else:
+            print("Directory is empty")
