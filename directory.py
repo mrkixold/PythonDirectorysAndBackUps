@@ -65,7 +65,3 @@ class Directory:
                     counter+=1
         else:
             print("Directory empty")
-
-test = Directory(r"D:\repos\tests\cositas")
-test.RenameOnlyDivs("carpeta")
-test.RenameOnlyFiles("Archivo")
