@@ -7,6 +7,12 @@ class Directory:
     def GetExtension(self, file):
         extension = file.split('.')[-1]
         return extension
+    def GetFileName(self, file):
+        if("." in file):
+            filename = file.split('.')[0]
+            return filename
+        else:
+            return file
     def GetFileType(self, file):
         filepath = self.path + '\\' + file
         filetype = ""
@@ -65,3 +71,17 @@ class Directory:
                     counter+=1
         else:
             print("Directory empty")
+
+    def AddPrefix(self, prefix):
+        counter = 1
+        if(len(self.files)):
+            for file in self.files:
+                filename = self.GetFileName(file)
+                newname = prefix + "_" + filename
+                self.RenameChildElement(file, newname)
+                counter+=1
+        else:
+            print("Directory is empty")
+
+test = Directory(r"D:\repos\tests\cositas")
+test.AddPrefix("BackUp1")
