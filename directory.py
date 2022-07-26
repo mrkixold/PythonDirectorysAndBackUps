@@ -82,6 +82,3 @@ class Directory:
                 counter+=1
         else:
             print("Directory is empty")
-
-test = Directory(r"D:\repos\tests\cositas")
-test.AddPrefix("BackUp1")
