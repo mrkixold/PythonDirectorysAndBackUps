@@ -67,6 +67,7 @@ def writeMenu():
         os.listdir(path)
     except:
         print("Directory not found")
+        writeMenu()
     else: 
         chooseOptionsOne(path)
 
