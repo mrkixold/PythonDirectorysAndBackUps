@@ -1,18 +1,22 @@
 import os
+import shutil
 
 class Directory: 
     def __init__(self, path):
         self.path = path
         self.files = os.listdir(path)
+
     def GetExtension(self, file):
         extension = file.split('.')[-1]
         return extension
+
     def GetFileName(self, file):
         if("." in file):
             filename = file.split('.')[0]
             return filename
         else:
             return file
+
     def GetFileType(self, file):
         filepath = self.path + '\\' + file
         filetype = ""
@@ -23,6 +27,7 @@ class Directory:
             filetype = "file"
             return filetype
         return "unknown"
+
     def RenameChildElement(self, file, newname):
         filetype = self.GetFileType(file)
         if(filetype == "folder"):
@@ -34,6 +39,7 @@ class Directory:
                 extension = "." + self.GetExtension(file)
             os.rename(self.path + '/' + file, self.path + '/' + newname + extension)
             print("Renaming " + file + " to " + newname + extension)
+            
     def RenameAllFiles(self, newname):
         counter = 1
         if(len(self.files)):
@@ -82,3 +88,7 @@ class Directory:
                 counter+=1
         else:
             print("Directory is empty")
+    
+    def GenerateZipFile(self):
+        destination = "Backup_directory/" + self.path.split('\\')[-1]
+        shutil.make_archive(destination, 'zip', self.path)
