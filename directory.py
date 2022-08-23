@@ -89,6 +89,5 @@ class Directory:
         else:
             print("Directory is empty")
     
-    def GenerateZipFile(self):
-        destination = "Backup_directory/" + self.path.split('\\')[-1]
+    def GenerateZipFile(self, destination):
         shutil.make_archive(destination, 'zip', self.path)
