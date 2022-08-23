@@ -88,6 +88,10 @@ class Directory:
                 counter+=1
         else:
             print("Directory is empty")
-    
+    def GetFolderName(self):
+        folder_name = self.path.split("\\")[-1]
+        return folder_name
     def GenerateZipFile(self, destination):
-        shutil.make_archive(destination, 'zip', self.path)
+        folder_name = self.GetFolderName()
+        backup_destination = destination + "\\" + folder_name
+        shutil.make_archive(backup_destination, 'zip', self.path)
